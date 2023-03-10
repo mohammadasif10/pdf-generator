@@ -14,6 +14,10 @@ for index, row in csvreader.iterrows():
   mypdf.line(10,22,200,22)#draws a line, values are in mm bc that's predefiend (x1, y1, x2, y2)(distance from left of page to where line starts, distance from top of page where line starts, distance from LEFT of page(starts from beginning of left, usually way bigger, best to think of it as where it ends, maybe can use negative numbers, and the distance from top where line ends))
   #print(row)prints values of csv file but also prints Name which is just the index iterrows gives it and dtype which iis just data type, just object in this instance bc its an object of pandas
 
+  for i in range(row["pages"] - 1):#inside top loop so it can access each row as it loops through it, minus 1 bc we already create an initial page each time the first loop runs in forst line, this will create whatever the each row says for pages but since we alr have 1, we just subtract it here 
+    mypdf.addpage()
+#for i in range(5):
+  #print("hello") #this is a for loop that iterates over a range starting from 0 anf containing the number of elements passed as a parameter. range(5) is like 0,1,2,3,4. 5 total numbers but i will only ever equal 4, not 5 in this loop due to range starting at 0 as well.
 
 
 mypdf.output("myoutput.pdf")
